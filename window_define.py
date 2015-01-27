@@ -1,5 +1,4 @@
 
-
 from ctypes import *
 
 UINT      = c_uint
@@ -9,6 +8,7 @@ HANDLE    = c_int
 LPCTSTR   = POINTER(c_char)
 BOOL      = c_bool
 LONG      = c_long
+DWORD     = c_ulong
 
 
 WNDPROC = WINFUNCTYPE(c_long,c_int,c_uint,c_int,c_int )
@@ -37,7 +37,7 @@ class RECT(Structure):
         ('bottom',        LONG),
         ]
     
-class PAINTSTRUCT(Struct):
+class PAINTSTRUCT(Structure):
     _fileds_=[
         ('hDc',           HANDLE),
         ('fErase',        BOOL),
@@ -46,9 +46,23 @@ class PAINTSTRUCT(Struct):
         ('fIncUpdate',    BOOL),
         ('rgbReserved[32]',c_char*32)
         ]
-class 
-    
 
+
+class POINT(Structure):
+    _fileds_=[
+        ('x',             LONG),
+        ('y',             LONG),
+        ]
+
+class MSG(Structure):
+    _fileds_=[
+        ('hWnd',         HANDLE),
+        ('message',      UINT),
+        ('wParam',       INT),
+        ('lParam',       INT),
+        ('time',         DWORD),
+        ('pt',           POINT),
+        ]
 
 
 
